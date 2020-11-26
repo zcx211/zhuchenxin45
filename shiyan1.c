@@ -1,4 +1,4 @@
-#include "shiyan1.h"
+#include "list.h"
 
 int InitList(LinkList *L){
     (*L) = (LinkList)malloc(sizeof(Node));

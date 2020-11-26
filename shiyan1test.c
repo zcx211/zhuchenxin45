@@ -1,4 +1,4 @@
-#include "shiyan1.c"
+#include "list.h"
 
 int main(){
     LinkList L;

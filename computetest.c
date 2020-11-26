@@ -1,4 +1,4 @@
-#include "compute.c"
+#include "compute.h"
 
 int main(){
     StackChar s1;
