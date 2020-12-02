@@ -8,7 +8,6 @@
 #define STACKINCREMENT 10
 #define MAXBUFFER 100
 
-static int i=0;
 static char str[MAXBUFFER];
 
 typedef char ElemType;
@@ -35,7 +34,6 @@ void PushDouble(StackDouble *s,DataType e);
 int LenChar(StackChar s);
 int LenDouble(StackDouble s);
 void GetChar(StackChar s,ElemType *e);
-void Transform(StackChar s);
-double Calculate(StackDouble s,ElemType str[]);
+double Calculate(StackChar S,StackDouble s,ElemType str[]);
 
 #endif

@@ -6,9 +6,8 @@ int main(){
 
     InitChar(&s1);
     InitDouble(&s2);
-    Transform(s1);
 
-    printf("最后的结果为:%f",Calculate(s2,str));
+    printf("最后的结果为:%f",Calculate(s1,s2,str));
     printf("\n");
 
     return 0;

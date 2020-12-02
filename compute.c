@@ -77,9 +77,13 @@ void GetChar(StackChar s,ElemType *e){
     PushChar(&s,*e);
 }
 
-void Transform(StackChar s){
-    int j;
-    char c,e;
+double Calculate(StackChar S,StackDouble s,char str[]){
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    char str2[MAXBUFFER];
+    char c,e,m;
+    double a,b,d;
 
     printf("请输入一个需要计算的多项式，以输入=表示结束:\n");
     scanf("%c",&c);
@@ -89,47 +93,47 @@ void Transform(StackChar s){
             str[i++] = c;
         }
         else if('+' == c||'-' == c){
-            GetChar(s,&e);
-            if(LenChar(s) == 0||'(' == e){
-                PushChar(&s,c);
+            GetChar(S,&e);
+            if(LenChar(S) == 0||'(' == e){
+                PushChar(&S,c);
                 str[i++] = ' ';
             }
             else{
                 do{
-                    PopChar(&s,&e);
+                    PopChar(&S,&e);
                     str[i++] = ' ';
                     str[i++] = e;
-                }while(LenChar(s) != 0);
-                PushChar(&s,c);
+                }while(LenChar(S) != 0);
+                PushChar(&S,c);
                 str[i++] = ' ';
             }
         }
         else if('*' == c||'/' == c){
-            GetChar(s,&e);
-            if(LenChar(s) == 0||'(' == e){
-                PushChar(&s,c);
+            GetChar(S,&e);
+            if(LenChar(S) == 0||'(' == e){
+                PushChar(&S,c);
                 str[i++] = ' ';
             }
             else{
                 if('*' == e||'/' == e){
-                    PopChar(&s,&e);
+                    PopChar(&S,&e);
                     str[i++] = ' ';
                     str[i++] = e;
-                    PushChar(&s,c);
+                    PushChar(&S,c);
                     str[i++] = ' ';
                 }
                 else{
-                    PushChar(&s,c);
+                    PushChar(&S,c);
                     str[i++] = ' ';
                 }
             }
         }
         else if('(' == c){
-            PushChar(&s,c);
+            PushChar(&S,c);
         }
         else if(')' == c){
             do{
-                PopChar(&s,&e);
+                PopChar(&S,&e);
                 if(e != '('){
                     str[i++] = ' ';
                     str[i++] = e;
@@ -139,35 +143,26 @@ void Transform(StackChar s){
 
         scanf("%c",&c);
     }
-    while(LenChar(s) != 0){
-        PopChar(&s,&e);
+    while(LenChar(S) != 0){
+        PopChar(&S,&e);
         str[i++] = ' ';
         str[i++] = e;
     }
 
-}
-
-double Calculate(StackDouble s,char str[]){
-    int j = 0;
-    char str2[MAXBUFFER];
-    int k = 0;
-    char c;
-    double a,b,d;
-
-    c = str[j];
+    m = str[j];
     while(j <= i){
-        while((c >= '0'&&c <= '9')||c == '.'){
-            str2[k] = c;
+        while((m >= '0'&&m <= '9')||m == '.'){
+            str2[k] = m;
             str2[++k] = '\0';
 
-            c = str[++j];
-            if(' ' == c){
+            m = str[++j];
+            if(' ' == m){
                 d = atof(str2);
                 PushDouble(&s,d);
                 k = 0;
             }
         }
-        switch(c){
+        switch(m){
             case '+':
                 PopDouble(&s,&a);
                 PopDouble(&s,&b);
@@ -195,7 +190,7 @@ double Calculate(StackDouble s,char str[]){
                 break;
         }
 
-        c = str[++j];
+        m = str[++j];
     }
 
     PopDouble(&s,&d);
