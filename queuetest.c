@@ -10,6 +10,7 @@ int main(){
     PushQueue(&m,70,last);
     PushQueue(&m,60,first);
     PrintQueue(&m);
+    //printf("弹出的队首元素为%d\n",PopQueue(&m,first));
     printf("队列的元素个数为%d\n",LenQueue(&m));
     GetQueue(&m,&t,first);
     printf("队头的元素为%d\n",t);

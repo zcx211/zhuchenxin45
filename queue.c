@@ -45,21 +45,25 @@ void PushQueue(pNode *p,ElemType e,status sign){
     }
 }
 
-void PopQueue(pNode *p,ElemType *e,status sign){
+int PopQueue(pNode *p,status sign){
+    int e;
+
     if(Empty(p)){
         printf("error\n");
         exit(1);
     }
     else{
         if(sign == first){
-            *e = p->first_head->data;
+            e = p->first_head->data;
             p->first_head = p->first_head->next;
         }
         else{
-            *e = p->last_head->data;
+            e = p->last_head->data;
             p->last_head = p->last_head->prev;
         }
     }
+
+    return e;
 }
 
 void DestroyQueue(pNode *p){

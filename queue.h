@@ -26,7 +26,7 @@ typedef enum status{
 void InitQueue(pNode *p);
 int Empty(pNode *p);
 void PushQueue(pNode *p,ElemType e,status sign);
-void PopQueue(pNode *p,ElemType *e,status sign);
+int PopQueue(pNode *p,status sign);
 void DestroyQueue(pNode *p);
 void GetQueue(pNode *p,ElemType *e,status sign);
 int LenQueue(pNode *p);
